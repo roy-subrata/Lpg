@@ -1,0 +1,89 @@
+﻿@model PaginatedList<CylinderViewModel>
+
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h5>Cylinder List</h5>
+
+<div class="header mb-3">
+    <a asp-action="Create">Create New</a>
+    <form asp-action="List" class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" name="searchString" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</div>
+<div class="table-responsive-lg table-responsive-md">
+    <table class="table table-sm table-bordered">
+        <thead class="thead-dark">
+            <tr class="text-center">
+                <th>
+                    @Html.DisplayName("Brand")
+                </th>
+                <th>
+                    @Html.DisplayName("Size(MM)")
+                </th>
+                <th>
+                    @Html.DisplayName("Gas Weight(Kg)")
+                </th>
+                <th>
+                    @Html.DisplayName("Cylinder Weight(Kg)")
+                </th>
+                <th>
+                    @Html.DisplayName("Total Weight(Kg)")
+                </th>
+                <th>
+                    @Html.DisplayName("Cylinder Color")
+                </th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Brand)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Size)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GasWeight)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CylinderWeight)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalWeight)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Color)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-action="List"
+       asp-route-pageNumber="@(Model.PageIndex - 1)"
+       class="btn btn-default @prevDisabled">
+        Previous
+    </a>
+    <a asp-action="List"
+       asp-route-pageNumber="@(Model.PageIndex + 1)"
+       class="btn btn-default @nextDisabled">
+        Next
+    </a>
+
+</div>

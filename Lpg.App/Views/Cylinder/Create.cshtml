@@ -1,0 +1,60 @@
+﻿@model CylinderViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h5>Create New Crylinder</h5>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Brand" class="control-label"></label>
+                <input asp-for="Brand" class="form-control form-control-sm " />
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label  class="control-label">Size</label>
+                <input asp-for="Size" class=" form-control form-control-sm" />
+                <span asp-validation-for="Size" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Cylinder Weight</label>
+                <input asp-for="CylinderWeight" class="form-control form-control-sm" />
+                <span asp-validation-for="CylinderWeight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label  class="control-label">Gas Weight</label>
+                <input asp-for="GasWeight" class=" form-control form-control-sm" />
+                <span asp-validation-for="GasWeight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Total Weight</label>
+                <input asp-for="TotalWeight" class="form-control form-control-sm" />
+                <span asp-validation-for="TotalWeight" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Color" class="control-label"></label>
+                <input asp-for="Color" class="form-control form-control-sm" />
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary btn-sm" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-primary btn-sm" asp-action="List">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

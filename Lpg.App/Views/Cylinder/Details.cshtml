@@ -1,0 +1,54 @@
+﻿@model CylinderViewModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h5><span class="text-info">@Model.Brand-@Model.Size-@Model.TotalWeight Details</span></h5>
+<hr />
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayName("Brand Name")
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Brand)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayName("Size(MM)")
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Size)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayName("Gas Weight")
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.GasWeight)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayName("Cylinder Weight")
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.CylinderWeight)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayName("Total Weight")
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.TotalWeight)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayName("Color")
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Color)
+    </dd>
+
+
+</dl>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="List">Back to List</a>
+</div>
