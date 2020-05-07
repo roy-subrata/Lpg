@@ -80,3 +80,24 @@ body {
         width:1500px;
     }
 }
+
+.paging-footer{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height:40px;
+}
+.search-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 80px;
+}
+.no-space-break{
+    white-space:nowrap;
+}
+li {
+    color: #1b6ec2;
+}
+.card {
+    background-color: #f7f7f9 !important;
+    border:none !important;
+}

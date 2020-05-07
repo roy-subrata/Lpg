@@ -3,122 +3,49 @@
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
-
-<hr />
 <div class="card">
-    <form class="form-inline">
-        <div class="form-group mb-2">
-            <label asp-for="PoNo" class="control-label"></label>
-            <input type="text" class="form-control  form-control-sm">
+    
+    <div class="card-body">
+     <h5>Create New Purchase Order</h5>
+       
+        <div>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label class="mr-2" for="">Po.No</label>
+                    <input type="text" class="mr-2" name="" id="" placeholder="" aria-describedby="helpId">
+         
+                </div>
+                <div class="form-group">
+                  <label class="mr-2" for=" ">Po.Date</label>
+                  <input type="text" class="mr-2" name="" id=""  placeholder="" aria-describedby="helpId">
+           
+                </div>
+                <div class="form-group">
+                  <label class="mr-2" for="">Type</label>
+                  <select class="mr-2" name="" id="">
+                    <option>Draft</option>
+                    <option>Not Yet Receive</option>
+                    <option>Receive</option>
+                  </select>
+                </div>
+            </form>
         </div>
-        <div class="form-group mx-sm-3 mb-2">
-            <label class="control-label">P.Date</label>
-            <input type="datetime" class="form-control form-control-sm" id="pdate">
-        </div>
-        <div class="form-group mx-sm-3 mb-2">
-            <label a class="control-label">P.Status</label>
-            <select class="form-control  form-control-sm">
-                <option>Draft</option>
-                <option>Not Yet Receive</option>
-                <option>Receive</option>
-            </select>
-        </div>
-
-    </form>
-
+    </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-    var counter = 1;
-        $(function () {
-            $('#add').click(function () {
-                $('<tr id="tablerow' + counter + '"><td>' +
-                    '<input type="text" class="text-box single-line" name="ClientSampleID[' + counter + ']" value="" required="required" />' +
-                    '</td>' +
-                    '<td>' +
-                    '<input type="text" class="text-box single-line" name="AdditionalComments[' + counter + ']" value="" required="required" />' +
-                    '</td>' +
-                    '<td>' +
-                    '<input type="text" class="text-box single-line" name="AcidStables[' + counter + ']" value="" required="required" />' +
-                    '</td>' +
-                    '<td>' +
-                    '<button type="button" class="btn btn-primary" onclick="removeTr(' + counter + ');">Delete</button>' +
-                    '</td>' +
-                    '</tr>').appendTo('#submissionTable');
-                counter++;
-                return false;
-            });
-        });
-        function removeTr(index) {
-            if (counter > 1) {
-                $('#tablerow' + index).remove();
-                counter--;
-            }
-            return false;
-        }
-</script>
-<div class="row">
-     <table id="submissionTable" class="table table-sm">
-        <thead>
-            <tr>
-                <td>Sample ID</td>
-                <td>Additional Comments</td>
-                <td>Acid-stable amino acids</td>
-            </tr>
-        </thead>
 
-        <tr id="tablerow0">
-            <td>
-                <div class="editor-field">
-                    <input class="text-box single-line" name="ClientSampleID[0]" type="text" value="" required="required" />
-                </div>
-            </td>
-            <td>
-                <div class="editor-field">
-                    <input class="text-box single-line" name="AdditionalComments[0]" type="text" value="" required="required" />
-                </div>
-            </td>
-            <td>
-                <div class="editor-field">
-                    <input class="text-box single-line" name="AcidStables[0]" type="text" value="" />
-                </div>
-            </td>
-            <td>
-                <button type="button" class="btn btn-primary" onclick="removeTr(0);">Delete</button>
-            </td>
-            <td></td>
-        </tr>
-
-    </table>
-    <p>
-        <button id="add" type="button" class="btn btn-primary">Add</button>
-    </p>
-    <hr />
-
-    <p>
-        <input type="submit" value="Create" class="btn btn-default" />
-    </p>
-
-    @*<div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="PoNo" class="control-label"></label>
-                <input asp-for="PoNo" class="form-control" />
-                <span asp-validation-for="PoNo" class="text-danger"></span>
+<div class="container">
+    <form>
+        <div class="form-group row">
+            <label for="inputName" class="col-sm-1-12 col-form-label"></label>
+            <div class="col-sm-1-12">
+                <input type="text" class="form-control" name="inputName" id="inputName" placeholder="">
             </div>
-            <div class="form-group">
-                <label asp-for="CreatedBy" class="control-label"></label>
-                <input asp-for="CreatedBy" class="form-control" />
-                <span asp-validation-for="CreatedBy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>*@
+        </div>
+        
+    </form>
 </div>
 
 <div>

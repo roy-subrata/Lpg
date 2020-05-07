@@ -5,19 +5,50 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h5>Cylinder List</h5>
 
-<div class="header mb-3">
-    <a asp-action="Create">Create New</a>
-    <form asp-action="List" class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" name="searchString" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+<div class="card">
+    <div class="card-body">
+        <form action="List" method="Get">
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="col-md-3 text-dark">Brand</label>
+                    <select class="col-md-8" name="brandSearch" asp-items="@(ViewBag.BrandList)">
+                        <option value=""></option>
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="col-md-3 text-dark">Size</label>
+                    <select class="col-md-8" name="sizeSearch" asp-items="@(ViewBag.SizeList)">
+                        <option value=""></option>
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="col-md-4 text-dark">Gas Wieght</label>
+                    <select class="col-md-7" name="gasWeightSearch" asp-items="@(ViewBag.GasWeightList)">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="offset-md-10 col-md-2">
+                    <div class="btn-group btn-group-sm" role="group">
+                        <button class="btn btn-primary">Search</button>
+                        <button class="btn btn-warning">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
-<div class="table-responsive-lg table-responsive-md">
-    <table class="table table-sm table-bordered">
-        <thead class="thead-dark">
-            <tr class="text-center">
+
+
+<div class="table-responsive-md mt-3">
+    <table class="table table-md table-sm table-bordered">
+        <thead  style="background-color:#1b6ec2">
+            <tr class="text-center text-white">
                 <th>
                     @Html.DisplayName("Brand")
                 </th>
@@ -69,21 +100,23 @@
                 </tr>
             }
         </tbody>
+
     </table>
     @{
         var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
         var nextDisabled = !Model.HasNextPage ? "disabled" : "";
     }
-
-    <a asp-action="List"
-       asp-route-pageNumber="@(Model.PageIndex - 1)"
-       class="btn btn-default @prevDisabled">
-        Previous
-    </a>
-    <a asp-action="List"
-       asp-route-pageNumber="@(Model.PageIndex + 1)"
-       class="btn btn-default @nextDisabled">
-        Next
-    </a>
-
 </div>
+<div class="card bg-light paging-footer">
+    <div class="">
+        <a asp-action="List" asp-route-pageNumber="@(Model.PageIndex - 1)" class="btn btn-default @prevDisabled">Previous</a>
+        <a asp-action="List" asp-route-pageNumber="@(Model.PageIndex + 1)" class="btn btn-default @nextDisabled"> Next</a>
+        
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/client/services/cylinder/cylinderDataSvc.js"></script>
+    <script src="~/js/client/controllers/cylinder/cylinderCtrl.js"></script>
+}
+

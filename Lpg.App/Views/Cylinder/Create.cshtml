@@ -6,55 +6,100 @@
 
 <h5>Create New Crylinder</h5>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            
+<form asp-action="Create">
+    <div class="card" style="background-color: #f7f7f9 !important">
+        <div class="card-body">
+
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Brand" class="control-label"></label>
-                <input asp-for="Brand" class="form-control form-control-sm " />
-                <span asp-validation-for="Brand" class="text-danger"></span>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group row">
+                        <label for="inputEmail" class="col-md-4" asp-for="Brand"></label>
+                        <div class="col-md-8">
+                            <input type="text" asp-for="Brand">
+                            <div>
+                                <span asp-validation-for="Brand" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group row">
+                        <label class="col-md-4 " asp-for="Size"></label>
+                        <div class="col-sm-8">
+                            <input type="text" asp-for="Size">
+                            <div>
+                                <span asp-validation-for="Size" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="form-group row">
+                        <label class="col-md-4" asp-for="GasWeight"></label>
+                        <div class="col-md-8">
+                            <input type="text" asp-for="GasWeight">
+                            <div>
+                                <span asp-validation-for="GasWeight" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label  class="control-label">Size</label>
-                <input asp-for="Size" class=" form-control form-control-sm" />
-                <span asp-validation-for="Size" class="text-danger"></span>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group row">
+                        <label for="inputEmail" class="col-md-4" asp-for="CylinderWeight"></label>
+                        <div class="col-md-8">
+                            <input type="text" asp-for="CylinderWeight">
+                            <div>
+                                <span asp-validation-for="CylinderWeight" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group row">
+                        <label class="col-md-4 " asp-for="TotalWeight"></label>
+                        <div class="col-sm-8">
+                            <input type="text" asp-for="TotalWeight">
+                            <div>
+                                <span asp-validation-for="TotalWeight" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="form-group row">
+                        <label class="col-md-4" asp-for="Color"></label>
+                        <div class="col-md-8">
+                            <input type="text" asp-for="Color">
+                            <div>
+                                <span asp-validation-for="Color" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label class="control-label">Cylinder Weight</label>
-                <input asp-for="CylinderWeight" class="form-control form-control-sm" />
-                <span asp-validation-for="CylinderWeight" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label  class="control-label">Gas Weight</label>
-                <input asp-for="GasWeight" class=" form-control form-control-sm" />
-                <span asp-validation-for="GasWeight" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label class="control-label">Total Weight</label>
-                <input asp-for="TotalWeight" class="form-control form-control-sm" />
-                <span asp-validation-for="TotalWeight" class="text-danger"></span>
+            <div class="row">
+                <div class="offset-md-10 col-md-2">
+                    <div class="btn-group btn-group-sm" role="group">
+                        <button class="btn btn-primary">Save</button>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Color" class="control-label"></label>
-                <input asp-for="Color" class="form-control form-control-sm" />
-                <span asp-validation-for="Color" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary btn-sm" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
+</form>
 
 <div>
-    <a class="btn btn-primary btn-sm" asp-action="List">Back to List</a>
+    <a asp-action="List">Back to List</a>
 </div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

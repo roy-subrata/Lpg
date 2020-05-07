@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] -Lpg Management System</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+<body ng-app="LpgApp">
+    <header ng-controller="purchaseOrderCtrl">
+        <nav style="background-color:#ffc107" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light text-dark border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Lpg Management System</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -34,7 +35,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="PurchaseOrders" asp-action="Index">Purchase Order</a>
                         </li>
-                     
+
                     </ul>
                 </div>
             </div>
@@ -46,14 +47,17 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - Lpg.App - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+    
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/semantic.min.js"></script>
+    <script src="~/lib/angular/angular.min.js"></script>
+    <script src="~/js/client/app.js"></script>
+    <script src="~/js/client/controllers/purchaseOrderCtrl.js"></script>
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>

@@ -17,20 +17,34 @@ namespace Lpg.App.Controllers
         private readonly IMapper _mapper;
         private readonly LpgDbContext _context;
 
-        public CylinderController(LpgDbContext context,IMapper mapper)
+        public CylinderController(LpgDbContext context, IMapper mapper)
         {
             _mapper = mapper;
             _context = context;
         }
 
 
-        public  IActionResult List(string searchString,int? pageNumber)
+        public IActionResult List(string brandSearch, string sizeSearch, int? gasWeightSearch, int? pageNumber)
         {
             int pageSize = 10;
             var cylinders = from s in _context.Cylinder
                             select s;
-            if (!string.IsNullOrEmpty(searchString))
-                cylinders = cylinders.Where(f => f.Brand.Contains(searchString));
+            if (!string.IsNullOrEmpty(brandSearch) )
+                cylinders = cylinders.Where(f => f.Brand.Contains(brandSearch));
+            if (!string.IsNullOrEmpty(sizeSearch))
+                cylinders = cylinders.Where(f => f.Size.Contains(sizeSearch));
+            if (gasWeightSearch >= 1)
+                cylinders = cylinders.Where(f => f.GasWeight==gasWeightSearch);
+
+            var brands = _context.Cylinder.Select(s => new { Brand=s.Brand}).Distinct();
+            var sizes = _context.Cylinder.Select(s => new { Size = s.Size}).Distinct();
+            var GasWeights = _context.Cylinder.Select(s => new { GasWeight = s.GasWeight}).Distinct();
+
+            ViewBag.searchParam= new { brand=brandSearch,size=sizeSearch,gasWeight=gasWeightSearch };
+            ViewData["BrandList"] = new SelectList(brands, "Brand","Brand" );
+            ViewData["SizeList"] = new SelectList(sizes, "Size", "Size");
+            ViewData["GasWeightList"] = new SelectList(GasWeights, "GasWeight", "GasWeight");
+
 
             return View(PaginatedList<CylinderViewModel>.Create(_mapper.Map<List<CylinderViewModel>>(cylinders.ToList()), pageNumber ?? 1, pageSize));
 

@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "angular.js@1.3.4-build.3588",
+      "destination": "wwwroot/js/angular",
+      "files": [ "angular.min.js" ]
+    },
+    {
+      "library": "semantic-ui@2.4.1",
+      "destination": "wwwroot/lib/",
+      "files": ["semantic.min.css","semantic.min.js"]
+    }
+  ]
+}
