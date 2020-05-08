@@ -17,7 +17,7 @@
                     <div class="form-group row">
                         <label for="inputEmail" class="col-md-4" asp-for="Brand"></label>
                         <div class="col-md-8">
-                            <input type="text" asp-for="Brand">
+                            <input r-auto  items="[1,23,4]" type="text" asp-for="Brand">
                             <div>
                                 <span asp-validation-for="Brand" class="text-danger"></span>
                             </div>
@@ -100,6 +100,9 @@
 <div>
     <a asp-action="List">Back to List</a>
 </div>
+
+
 @section Scripts {
+   
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

@@ -14,6 +14,10 @@ namespace Lpg.App.Mapper
         {
             CreateMap<Cylinder, CylinderViewModel>().ReverseMap();
             CreateMap<Supplier, SupplierViewModel>().ReverseMap();
+            CreateMap<Order, OrderViewModel>().ReverseMap();
+
+            CreateMap<PurchaseOrder, PurchaseOrderViewModel>().ReverseMap();
+           
         }
     }
 }

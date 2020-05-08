@@ -1,12 +1,14 @@
-﻿using System;
+﻿using Lpg.Data.Entity;
+using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Lpg.Data.Entity
+namespace Lpg.App.Models
 {
-    public class PurchaseOrder : BaseEntity
+    public class PurchaseOrderViewModel
     {
-  
+        public int Id { get; set; }
         public string PoNumber { get; set; }
         public string TermPoint { get; set; }
         public int WaresHouseId { get; set; }
@@ -22,7 +24,7 @@ namespace Lpg.Data.Entity
         public string RefNumberIn { get; set; }
         public string RefNumberIEx { get; set; }
         public int SupplierId { get; set; }
-        public Supplier Supplier { get; set; }
-        public List<Order> Orders { get; set; }
+        public SupplierViewModel Supplier { get; set; }
+        public List<OrderViewModel> Orders { get; set; }
     }
 }

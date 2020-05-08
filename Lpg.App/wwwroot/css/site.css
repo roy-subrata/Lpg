@@ -98,6 +98,9 @@ li {
     color: #1b6ec2;
 }
 .card {
-    background-color: #f7f7f9 !important;
+    background-color: white !important;
     border:none !important;
+}
+body {
+    background-color: #f7f7f9 !important;
 }

@@ -1,4 +1,5 @@
-﻿using Lpg.Data.Enty;
+﻿using Lpg.Data.Entity;
+using Lpg.Data.Enty;
 
 using System;
 using System.Collections.Generic;
@@ -47,12 +48,31 @@ namespace Lpg.Data
                         );
                     _context.SaveChanges();
                 }
-                if (!_context.Stock.Any())
+                if (!_context.PurchaseOrder.Any())
                 {
+                    _context.PurchaseOrder.AddRange(
+                       new PurchaseOrder
+                       {
+                           PoNumber = "qw",
+                           Address = "dff",
+                           DeliveryDate = DateTime.Now,
+                           Description = "N/A",
+                           PoDate = DateTime.Now,
+                           PoStatuse = 1,
+                           TermPoint = "D23",
+                           WaresHouseId = 1,
+                           Orders = new List<Order> 
+                           {
+                               new Order{CylinderId=1,Qauntity=12,UnitPrice=345},
+                               new Order{CylinderId=2,Qauntity=123,UnitPrice=245},
+                           },
+                           SupplierId=2
 
-
+                       },
+                       new Entity.PurchaseOrder { PoNumber = "23", Address = "dff", DeliveryDate = DateTime.Now, Description = "N/A", PoDate = DateTime.Now, PoStatuse = 1, TermPoint = "D23", WaresHouseId = 1 });
+                    _context.SaveChanges();
                 }
-               
+
             }
         }
     }

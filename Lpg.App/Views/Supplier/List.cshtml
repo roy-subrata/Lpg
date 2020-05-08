@@ -7,18 +7,37 @@
 
 <h5>Supplier List</h5>
 
-<div class="header mb-3">
-    <a asp-action="Create">Create New</a>
-    <form asp-action="List" class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" name="searchString" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-</div>
-<div class="table-responsive-lg table-responsive-md">
-    <table class="table table-sm table-bordered">
-        <thead class="thead-dark">
-            <tr class="text-center">
+<form asp-action="Create">
+    <div class="card" style="background-color: #f7f7f9 !important">
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group row">
+                        <label for="inputEmail" class="col-md-2">Company Name</label>
+                        <div >
+                            <input type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="offset-md-10 col-md-2">
+                    <div class="btn-group btn-group-sm" role="group">
+                        <button class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+
+<div class="table-responsive-md mt-3">
+    <table class="table table-md table-sm table-bordered">
+        <thead style="background-color:#1b6ec2">
+            <tr class="text-center text-white">
                 <th>
                     @Html.DisplayName("Company Name")
                 </th>
@@ -28,7 +47,7 @@
                 <th>
                     @Html.DisplayName("Contact")
                 </th>
-                <th></th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -57,16 +76,20 @@
         var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
         var nextDisabled = !Model.HasNextPage ? "disabled" : "";
     }
+    </div>
+    <div class="card bg-light paging-footer">
+        <div>
+            <a asp-action="List"
+               asp-route-pageNumber="@(Model.PageIndex - 1)"
+               class="btn btn-default @prevDisabled">
+                Previous
+            </a>
+            <a asp-action="List"
+               asp-route-pageNumber="@(Model.PageIndex + 1)"
+               class="btn btn-default @nextDisabled">
+                Next
+            </a>
 
-    <a asp-action="List"
-       asp-route-pageNumber="@(Model.PageIndex - 1)"
-       class="btn btn-default @prevDisabled">
-        Previous
-    </a>
-    <a asp-action="List"
-       asp-route-pageNumber="@(Model.PageIndex + 1)"
-       class="btn btn-default @nextDisabled">
-        Next
-    </a>
+        </div>
 
-</div>
+    </div>

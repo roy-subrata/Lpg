@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Lpg.Data.Entity.PurchaseOrder>
+﻿@model IEnumerable<PurchaseOrderViewModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -7,31 +7,65 @@
 
 <h1>Index</h1>
 
-<p ng-controller="purchaseOrderCtrl">
-    <a asp-action="Create">Create New</a>
-    {{title}}
-</p>
-<table class="table">
-    <thead>
-        <tr>
+<form asp-action="Create">
+    <div class="card" style="background-color: #f7f7f9 !important">
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group row">
+                        <label for="inputEmail" class="col-md-2">Company Name</label>
+                        <div>
+                            <input type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="offset-md-10 col-md-2">
+                    <div class="btn-group btn-group-sm" role="group">
+                        <button class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+<table class="table table-md table-sm table-bordered">
+    <thead style="background-color:#1b6ec2">
+        <tr class="text-center text-white">
             <th>
-                @Html.DisplayNameFor(model => model.PoNo)
+                Po Number
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreatedBy)
+                Po Date
             </th>
-            <th></th>
+            <th>
+                Delivery Date
+            </th>
+            <th>
+                Supplier
+            </th>
+            <th>Action</th>
         </tr>
+
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.PoNo)
+                    @Html.DisplayFor(modelItem => item.PoNumber)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                    @Html.DisplayFor(modelItem => item.PoDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PoStatuse)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Supplier.CompanyName)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

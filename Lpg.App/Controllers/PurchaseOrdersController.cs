@@ -7,22 +7,36 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Lpg.Data.Entity;
 using Lpg.Data.Enty;
+using AutoMapper;
+using Lpg.App.Models;
 
 namespace Lpg.App.Controllers
 {
     public class PurchaseOrdersController : Controller
     {
         private readonly LpgDbContext _context;
+        private readonly IMapper _mapper;
 
-        public PurchaseOrdersController(LpgDbContext context)
+        public PurchaseOrdersController(LpgDbContext context,IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: PurchaseOrders
         public async Task<IActionResult> Index()
         {
-            return View(await _context.PurchaseOrder.ToListAsync());
+            try
+            {
+                var d = _mapper.Map<List<PurchaseOrderViewModel>>(await _context.PurchaseOrder.Include(f=>f.Supplier).ToListAsync());
+                return View(d);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+          
         }
 
         // GET: PurchaseOrders/Details/5
@@ -34,13 +48,16 @@ namespace Lpg.App.Controllers
             }
 
             var purchaseOrder = await _context.PurchaseOrder
+                .Include(f=>f.Supplier)
+                .Include(f => f.Orders)
+                .Include("Orders.Cylinder")
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (purchaseOrder == null)
             {
                 return NotFound();
             }
 
-            return View(purchaseOrder);
+            return View(_mapper.Map<PurchaseOrderViewModel>(purchaseOrder));
         }
 
         // GET: PurchaseOrders/Create

@@ -1,30 +1,132 @@
-﻿@model Lpg.Data.Entity.PurchaseOrder
+﻿@model PurchaseOrderViewModel
 
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
+    <h5>Details Purchase OrderNo: @Model.PoNumber</h5>
 
-<div>
-    <h4>PurchaseOrder</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PoNo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PoNo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreatedBy)
-        </dd>
-    </dl>
-</div>
+    <div class="card">
+        <div class="card-body"> 
+            <div class="row">
+                <div class="col">
+                    <dl class="row">
+                        <dt class="col-md-5">
+                            @Html.DisplayNameFor(model => model.PoNumber)
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.PoNumber)
+                        </dd>
+                        <dt class="col-md-5">
+                            @Html.DisplayNameFor(model => model.PoDate)
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.PoDate)
+                        </dd>
+                        <dt class="col-md-5">
+                            @Html.DisplayNameFor(model => model.DeliveryDate)
+                        </dt>
+                        <dd class="col-sm-7">
+                            >
+                            @Html.DisplayFor(model => model.DeliveryDate)
+                        </dd>
+                        <dt class="col-md-5">
+                            @Html.DisplayNameFor(model => model.PoStatuse)
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.PoStatuse)
+                        </dd>
+                        <dt class="col-md-5">
+                            @Html.DisplayNameFor(model => model.Supplier.CompanyName)
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.Supplier.CompanyName)
+                        </dd>
+
+
+                    </dl>
+                </div>
+                <div class="col">
+                    <dl class="row">
+                        <dt class="col-md-5">
+                            @Html.DisplayNameFor(model => model.RefNumberIEx)
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.RefNumberIEx)
+                        </dd>
+                        <dt class="col-md-5">
+                            @Html.DisplayNameFor(model => model.RefNumberIn)
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.RefNumberIn)
+                        </dd>
+                        <dt class="col-md-5">
+                            @Html.DisplayNameFor(model => model.WaresHouseId)
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.WaresHouseId)
+                        </dd>
+                        <dt class="col-md-5">
+                            @Html.DisplayNameFor(model => model.Address)
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.Address)
+                        </dd>
+                        <dt class="col-md-5">
+                            @Html.DisplayNameFor(model => model.Description)
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.Description)
+                        </dd>
+
+
+                    </dl>
+                </div>
+            </div>
+        </div>
+      
+        <table class="table table-md table-sm table-bordered">
+            <thead style="background-color:#1b6ec2">
+                <tr class="text-center text-white">
+                    <th>
+                        Cylinder Brnad
+                    </th>
+                    <th>
+                      Qunatity
+                    </th>
+                    <th>
+                     Price
+                    </th>
+                   
+                    <th>Action</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Orders)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cylinder.Brand)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Qauntity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UnitPrice)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
